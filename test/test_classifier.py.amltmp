@@ -31,3 +31,5 @@ def_test_accuracy():
     clf.fit(X_train,y_train)
     y_pred = clf.predict(X_test)  
     assert  accuracy_score(y_test,y_pred) > 0.90 
+
+   

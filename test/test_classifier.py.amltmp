@@ -16,53 +16,18 @@ workspace = Workspace(subscription_id, resource_group, workspace_name)
 dataset = Dataset.get_by_name(workspace, name='Iris')
 df = dataset.to_pandas_dataframe()
 
-features = ['SepalLengthCm','SepalWidthCm','PetalLengthCm','PetalWidthCm']
-target = 'Species'
-X_train, X_test, y_train, y_test = train_test_split(df[features],df[target],test_size=0.1,shuffle=True)
-clf = DecisionTreeClassifier(criterion='entropy')
-clf.fit(X_train,y_train)
-y_pred = clf.predict(X_test)
-
-acc = accuracy_score(y_test,y_pred)
-print("Accuracy:",str(round(acc*100,2))+'%') 
 
 
 
+#def_test_columns():
+#   assert df.columns.to_list() = ['SepalLengthCm','SepalWidthCm','PetalLengthCm',#'PetalWidthCm']
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def_test_accuracy():
+    features = ['SepalLengthCm','SepalWidthCm','PetalLengthCm','PetalWidthCm']
+    target = 'Species'
+    X_train, X_test, y_train, y_test = train_test_split(df[features],
+    df[target], test_size=0.1,shuffle=True)
+    clf = DecisionTreeClassifier(criterion='entropy')
+    clf.fit(X_train,y_train)
+    y_pred = clf.predict(X_test)  
+    assert  accuracy_score(y_test,y_pred) > 0.90 
